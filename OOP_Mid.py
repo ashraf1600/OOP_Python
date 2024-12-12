@@ -1,28 +1,3 @@
-class Library:
-    def __init__(self):
-        self._book_list = []
-
-    def entry_book(self, book):
-        if isinstance(book, Book):
-            self._book_list.append(book)
-            print(f"'{book.get_title()}' is added to the library.")
-        else:
-            print("Only valid Book objects can be added.")
-
-    def display_books(self):
-        if not self._book_list:
-            print("The library has no books.")
-        else:
-            print("\nBooks in the library:")
-            for book in self._book_list:
-                print(f"ID: {book.get_book_id()}, Title: '{book.get_title()}', "
-                      f"Author: {book.get_author()}, Available: {'Yes' if book.is_available() else 'No'}")
-
-    @property
-    def book_list(self):
-        return self._book_list
-
-
 class Book:
     def __init__(self, book_id, title, author, availability=True):
         self.__book_id = book_id
@@ -63,12 +38,40 @@ class Book:
               f"Author: {self.__author}\n"
               f"Available: {availability_status}")
 
+class Library:
+    def __init__(self):
+        self._book_list = []
+
+    def entry_book(self, book):
+        if isinstance(book, Book):
+            self._book_list.append(book)
+            print(f"'{book.get_title()}' is added to the library.")
+        else:
+            print("Only valid Book objects can be added.")
+
+    def display_books(self):
+        if not self._book_list:
+            print("The library has no books.")
+        else:
+            print("\nBooks in the library:")
+            for book in self._book_list:
+                print(f"ID: {book.get_book_id()}, Title: '{book.get_title()}', "
+                      f"Author: {book.get_author()}, Available: {'Yes' if book.is_available() else 'No'}")
+
+    @property
+    def book_list(self):
+        return self._book_list
 
 def menu():
     library = Library()
-    library.entry_book(Book(1, "1984", "George Orwell", True))
-    library.entry_book(Book(2, "To Kill a Mockingbird", "Harper Lee", False))
-    library.entry_book(Book(3, "The Great Gatsby", "F. Scott Fitzgerald", True))
+    library.entry_book(Book(1, "Bangladesh: A Legacy Of Blood", "Anthony Mascarenhas", True))
+    library.entry_book(Book(2, "Amar fashi Chai", "Motiur Rahman Rentu", True))
+    library.entry_book(Book(3, "Kothau Keu Nei", "Humayun Ahmed", True))
+    library.entry_book(Book(4, "Amar dekha July'24", "Ashraful Islam", False))
+    library.entry_book(Book(5, "C Programming", "Subeen", True))
+    library.entry_book(Book(6, "Data Structure", "Schaums", True))
+    library.entry_book(Book(7, "Shopno jabe bari Amar", "Ashraful Islam", False))
+    library.entry_book(Book(8, "Lucky bashkar", "IDK", False))
 
     while True:
         print("\nLibrary Management System")
@@ -112,6 +115,6 @@ def menu():
         else:
             print("Invalid choice. Please try again.")
 
-
 if __name__ == "__main__":
+    print("____________________Welcome To the Library____________________\n")
     menu()
